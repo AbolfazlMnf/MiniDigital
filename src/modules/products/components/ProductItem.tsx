@@ -1,0 +1,51 @@
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { GalleryThumbnails, Heart } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+function ProductItem(props: { product: any }) {
+  const { product } = props;
+  return (
+    <Card className="w-[400px] transform transition-transform duration-200 hover:scale-105 ">
+      <CardHeader>
+        <div className="w-full h-[300px] relative ">
+          <Image
+            src={product?.images[0]?.image || "/images/iphone16.webp"}
+            alt={product?.name}
+            fill
+            className="object-cover rounded-t-lg "
+          />
+        </div>
+      </CardHeader>
+      <CardContent>
+        <h2 className="text-xl font-bold">{product?.name}</h2>
+        <p className="text-gray-500">{product?.category}</p>
+        <div className="flex justify-between items-center">
+          <p className=" mt-4 font-semibold text-lg">
+            {product?.price?.toFixed(2)}$
+          </p>
+          <div className=" mt-4 flex items-center  gap-2 ">
+            <Heart />
+            <Link href={`products/catalog?id=${product.id}`}>
+              <GalleryThumbnails />
+            </Link>
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full" asChild>
+          <Link href={`/products/${product.id}`}>More Details</Link>
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export default ProductItem;
