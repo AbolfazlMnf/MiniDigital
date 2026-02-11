@@ -5,12 +5,7 @@ function layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div>
-      privete layout
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }
 
 export default layout;

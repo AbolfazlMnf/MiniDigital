@@ -5,19 +5,19 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { ProductWithImage } from "@/types";
 import { GalleryThumbnails, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-function ProductItem(props: { product: any }) {
+function ProductItem(props: { product: ProductWithImage }) {
   const { product } = props;
   return (
     <Card className="w-[400px] transform transition-transform duration-200 hover:scale-105 ">
       <CardHeader>
         <div className="w-full h-[300px] relative ">
           <Image
-            src={product?.images[0]?.image || "/images/iphone16.webp"}
+            src={product?.images[0]?.image || "/images/NoImage.png"}
             alt={product?.name}
             fill
             className="object-cover rounded-t-lg "

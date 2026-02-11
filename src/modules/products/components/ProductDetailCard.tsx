@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProductWithImage } from "@/types";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function ProductDetailCard(product: any) {
+function ProductDetailCard(product: ProductWithImage) {
   return (
     <div className=" container mx-auto py-10 ">
       <Card className="max-w-3xl mx-auto ">
