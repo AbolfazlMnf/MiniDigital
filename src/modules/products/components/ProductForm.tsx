@@ -24,6 +24,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UpsertProduct } from "../services/server";
+import UploadImage from "./UploadImage";
 
 function ProductForm(props: { product: Product | null }) {
   const { product } = props;
@@ -116,6 +117,11 @@ function ProductForm(props: { product: Product | null }) {
             {product?.id ? "Update Product" : "Add Product"}
           </Button>
         </CardFooter>
+        {product?.id && (
+          <CardFooter>
+            <UploadImage productId={product.id} />
+          </CardFooter>
+        )}
       </form>
     </Card>
   );
