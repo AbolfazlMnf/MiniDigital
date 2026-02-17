@@ -3,6 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MonitorSmartphone, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { Toaster } from "@/components/ui/sonner";
+import { ClerkProvider } from "@clerk/nextjs";
+import Auth from "@/components/auth";
+import ReactQueryProvider from "@/providers/ReactQuery";
+import dynamic from "next/dynamic";
+import DropDownCart from "@/components/cart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,24 +37,44 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="flex flex-col justify-between min-h-screen">
-          <header className="fixed flex justify-between items-center shadow-xl px-20 bg-white w-full h-20 z-40">
-            <div className="flex items-center gap-2">
-              <MonitorSmartphone />
-              <Link href="/" className="font-bold text-2xl ">
-                Digital shop
-              </Link>
-            </div>
-            <div>
-              <ShoppingCart />
-            </div>
-          </header>
-          <div className="px-20 mt-26"> {children}</div>
-          <div className="my-10 mx-auto flex justify-center">{ads}</div>
-          <footer className="w-full h-10 bg-black text-white flex items-center justify-center">
-            <p>©2025 js with abolfazl . all rights reserved</p>
-          </footer>
-        </main>
+        <ClerkProvider
+        // appearance={{
+        //   elements: {
+        //     headerTitle: {
+        //       fontSize: 20,
+        //     },
+        //     formButtonPrimary: {
+        //       backgroundColor: "blue",
+        //       text: "white",
+        //     },
+        //   },
+        // }}
+        >
+          <ReactQueryProvider>
+            <main className="flex flex-col justify-between min-h-screen">
+              <header className="fixed flex justify-between items-center shadow-xl px-20 bg-white w-full h-20 z-40">
+                <div className="flex items-center gap-2">
+                  <MonitorSmartphone />
+                  <Link href="/" className="font-bold text-2xl ">
+                    Digital shop
+                  </Link>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Auth />
+                  <DropDownCart />
+                </div>
+              </header>
+              <div className="px-20 mt-26">
+                {children}
+                <Toaster />
+              </div>
+              {/* <div className="my-10 mx-auto flex justify-center">{ads}</div> */}
+              <footer className="w-full h-10 bg-black text-white flex items-center justify-center">
+                <p>©2025 js with abolfazl . all rights reserved</p>
+              </footer>
+            </main>
+          </ReactQueryProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

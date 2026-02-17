@@ -1,6 +1,6 @@
 import React from "react";
-import ProductForm from "../components/ProductForm";
 import { GetProductById } from "../services/server";
+import ProductForm from "../components/ProductFormWithAction";
 
 async function ProductDetailView(props: { id: string }) {
   const { id } = props;

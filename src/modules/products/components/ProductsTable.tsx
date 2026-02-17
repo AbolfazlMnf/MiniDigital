@@ -75,13 +75,13 @@ function ProductsTable(props: {
               </TableCell>
             </TableRow>
           ))}
-          <TableFooter>
-            <TableRow className="flex justify-between items-center w-full">
-              <TableCell>total</TableCell>
-              <TableCell>{products.length}</TableCell>
-            </TableRow>
-          </TableFooter>
         </TableBody>
+        <TableFooter>
+          <TableRow className="flex gap-4 items-center w-full">
+            <TableCell>total</TableCell>
+            <TableCell>{products.length}</TableCell>
+          </TableRow>
+        </TableFooter>
       </Table>
     </div>
   );

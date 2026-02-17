@@ -1,5 +1,7 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { UseCart } from "@/hooks/useCart";
 import { ProductWithImage } from "@/types";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -7,6 +9,7 @@ import Link from "next/link";
 import React from "react";
 
 function ProductDetailCard(product: ProductWithImage) {
+  const { addToCartMutation } = UseCart();
   return (
     <div className=" container mx-auto py-10 ">
       <Card className="max-w-3xl mx-auto ">
@@ -35,7 +38,7 @@ function ProductDetailCard(product: ProductWithImage) {
             <div className="flex flex-col justify-between">
               <div className="flex flex-col gap-6">
                 <p className="text-xl font-semibold">
-                  {product?.price.toFixed(2)}$
+                  {product?.price?.toFixed(2)}$
                 </p>
                 <p className="text-gray-700">quantity : {product?.quantity}</p>
                 <p className="mt-2 text-sm">Category : {product?.category}</p>
@@ -44,7 +47,11 @@ function ProductDetailCard(product: ProductWithImage) {
                 </p>
               </div>
               <div className="flex flex-col gap-4">
-                <Button className="mt-6">
+                <Button
+                  className="mt-6"
+                  onClick={() => addToCartMutation.mutate(product?.id)}
+                >
+                  add to Cart
                   <ShoppingCart />
                 </Button>
                 <Button variant="secondary" asChild>
