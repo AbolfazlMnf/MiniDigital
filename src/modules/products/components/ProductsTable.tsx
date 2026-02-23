@@ -43,7 +43,7 @@ function ProductsTable(props: {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.map((product: Product, i) => (
+          {products.map((product, i) => (
             <TableRow key={i}>
               <TableCell>{product.name}</TableCell>
               <TableCell className="text-center">{product.category}</TableCell>
