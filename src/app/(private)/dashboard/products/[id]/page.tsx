@@ -5,7 +5,7 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
   const data = await params;
   const { id } = data;
   return (
-    <div>
+    <div className="pb-20">
       <ProductDetailView id={id} />
     </div>
   );

@@ -58,7 +58,9 @@ function ProductForm(props: { product: Product | null }) {
         <Input type="hidden" name="id" value={data?.id || ""} />
         <CardHeader>
           <CardTitle>Product</CardTitle>
-          <CardDescription>Create new product</CardDescription>
+          <CardDescription>
+            {data ? "update" : "Create new"} product
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className=" mt-4 mb-2 flex flex-col gap-2 ">

@@ -29,10 +29,9 @@ function ProductItem(props: { product: ProductWithImage }) {
         <p className="text-gray-500">{product?.category}</p>
         <div className="flex justify-between items-center">
           <p className=" mt-4 font-semibold text-lg">
-            {product?.price?.toFixed(2)}$
+            $ {product?.price?.toLocaleString()}
           </p>
           <div className=" mt-4 flex items-center  gap-2 ">
-            <Heart />
             <Link href={`products/catalog?id=${product.id}`}>
               <GalleryThumbnails />
             </Link>

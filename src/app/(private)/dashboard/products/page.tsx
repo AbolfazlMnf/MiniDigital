@@ -3,7 +3,7 @@ import React from "react";
 
 function DashboardProductsPage() {
   return (
-    <div>
+    <div className="pt-5 pb-20 px-10">
       <ProductTableView />
     </div>
   );

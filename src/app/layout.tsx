@@ -9,6 +9,7 @@ import Auth from "@/components/auth";
 import ReactQueryProvider from "@/providers/ReactQuery";
 import dynamic from "next/dynamic";
 import DropDownCart from "@/components/cart";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,27 +52,27 @@ export default function RootLayout({
         // }}
         >
           <ReactQueryProvider>
-            <main className="flex flex-col justify-between min-h-screen">
-              <header className="fixed flex justify-between items-center shadow-xl px-20 bg-white w-full h-20 z-40">
+            <main className="flex flex-col min-h-screen">
+              <header className="fixed flex justify-between items-center shadow-xl px-20 h-20 z-40 border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 w-full ">
                 <div className="flex items-center gap-2">
-                  <MonitorSmartphone />
-                  <Link href="/" className="font-bold text-2xl ">
-                    Digital shop
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">MD</span>
+                  </div>
+                  <Link href="/" className="text-xl font-semibold">
+                    MiniDigital
                   </Link>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <Auth />
                   <DropDownCart />
                 </div>
               </header>
-              <div className="px-20 mt-26">
+              <div className=" mt-21">
                 {children}
                 <Toaster />
               </div>
               {/* <div className="my-10 mx-auto flex justify-center">{ads}</div> */}
-              <footer className="w-full h-10 bg-black text-white flex items-center justify-center">
-                <p>©2025 js with abolfazl . all rights reserved</p>
-              </footer>
+              <Footer />
             </main>
           </ReactQueryProvider>
         </ClerkProvider>

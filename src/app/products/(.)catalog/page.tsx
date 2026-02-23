@@ -6,7 +6,7 @@ function InterceptedCatalog() {
   return (
     <div className="flex flex-col my-4 mx-auto">
       <CatalogList />
-      <CatalogSelector />
+      {/* <CatalogSelector /> */}
     </div>
   );
 }

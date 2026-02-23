@@ -1,11 +1,11 @@
 import Banner from "@/components/banner";
 import Welcome from "@/components/banner/Welcome";
+import LandingView from "@/modules/landing/view";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Banner />
-      <Welcome />
+    <div>
+      <LandingView />
     </div>
   );
 }
