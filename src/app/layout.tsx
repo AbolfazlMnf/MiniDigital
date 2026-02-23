@@ -53,7 +53,7 @@ export default function RootLayout({
         >
           <ReactQueryProvider>
             <main className="flex flex-col min-h-screen">
-              <header className="fixed flex justify-between items-center shadow-xl px-20 h-20 z-40 border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 w-full ">
+              <header className="fixed flex justify-between items-center shadow-xl px-5 lg:px-20 h-20 z-40 border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 w-full ">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-sm">MD</span>
