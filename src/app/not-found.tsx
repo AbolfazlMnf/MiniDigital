@@ -6,7 +6,7 @@ import React from "react";
 function NotFoundPage() {
   const router = useRouter();
   return (
-    <div className="flex flex-col items-center   ">
+    <div className="flex flex-col items-center pb-20  ">
       <h2 className="text-8xl font-bold animate-bounce text-black mt-30 ">
         404
       </h2>

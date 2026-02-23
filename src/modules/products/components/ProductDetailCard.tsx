@@ -4,14 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UseCart } from "@/hooks/useCart";
 import { ProductWithImage } from "@/types";
+import { useClerk, useUser } from "@clerk/nextjs";
 import { ShoppingCart, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "sonner";
 
 function ProductDetailCard(product: ProductWithImage) {
   const { addToCartMutation } = UseCart();
-
+  const { isSignedIn, isLoaded } = useUser();
+  const { openSignIn } = useClerk();
+  const router = useRouter();
   return (
     <div className="container mx-auto py-10 px-4 md:px-0">
       <Card className="max-w-5xl mx-auto shadow-lg border border-gray-200 rounded-xl overflow-hidden">
@@ -40,7 +45,6 @@ function ProductDetailCard(product: ProductWithImage) {
               </div>
             </div>
 
-            {/* جزئیات محصول */}
             <div className="flex flex-col justify-between">
               <div className="space-y-4">
                 <p className="text-2xl font-bold text-gray-900">
@@ -57,11 +61,18 @@ function ProductDetailCard(product: ProductWithImage) {
                 </p>
               </div>
 
-              {/* دکمه‌ها */}
               <div className="mt-6 flex flex-col md:flex-row gap-4">
                 <Button
                   className="flex items-center justify-center gap-2 w-full md:w-auto"
-                  onClick={() => addToCartMutation.mutate(product?.id)}
+                  onClick={() => {
+                    if (!isLoaded) return;
+                    if (!isSignedIn) {
+                      toast.error("sign in first ^^");
+                      openSignIn();
+                      return;
+                    }
+                    addToCartMutation.mutate(product?.id);
+                  }}
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Add to Cart
