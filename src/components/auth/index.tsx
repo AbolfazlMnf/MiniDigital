@@ -12,7 +12,7 @@ export default async function Auth() {
   const isAdmin = user?.privateMetadata?.isAdmin;
 
   return (
-    <div className="mt-1">
+    <div>
       <SignedIn>{isAdmin ? <AdminMenu /> : <UserButton />}</SignedIn>
       <SignedOut>
         <SignInButton />
